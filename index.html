@@ -21,8 +21,7 @@
     <button type="submit" focus-input>timing started</button>
   </form>
   <div ng-repeat="entry in temps | orderBy: '-ordinal'">
-    {{entry.timestamp}} &middot;
-    {{entry.temp}} &middot;
+    {{entry}}
   </div>
 </div>
 </div>
