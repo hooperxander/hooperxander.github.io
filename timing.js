@@ -14,15 +14,11 @@ angular.module('timing', [])
   '$scope','$http','$window',
   function($scope,$http,$window){
     $scope.temps = [];
-    $scope.eci = $window.location.search.substring(1);
  
-    var bURL = '/sky/event/'+$scope.eci+'/eid/timing/started';
-    $scope.addTiming = function() {
-      var pURL = bURL + "?number=" + $scope.number + "&name=" + $scope.name;
+    $scope.getTemps = function() {
+      var pURL = 'http://localhost:8080/sky/cloud/A1wAHHaJ6YdUktuBQ97PJ6/temperature_store/temperatures';
       return $http.post(pURL).success(function(data){
         $scope.getAll();
-        $scope.number='';
-        $scope.name='';
       });
     };
  
@@ -34,7 +30,7 @@ angular.module('timing', [])
       });
     };
  
-    var gURL = '/sky/cloud/NxL6ZAMcKao5wu2BQ3tuo/temperature_store/temperatures';
+    var gURL = 'http://localhost:8080/sky/cloud/A1wAHHaJ6YdUktuBQ97PJ6/temperature_store/temperatures';
     $scope.getAll = function() {
       return $http.get(gURL).success(function(data){
         console.log(data)
@@ -44,18 +40,5 @@ angular.module('timing', [])
  
     $scope.getAll();
  
-    $scope.timeDiff = function(timing) {
-      var bgn_sec = Math.round(Date.parse(timing.time_out)/1000);
-      var end_sec = Math.round(Date.parse(timing.time_in)/1000);
-      var sec_num = end_sec - bgn_sec;
-      var hours   = Math.floor(sec_num / 3600);
-      var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-      var seconds = sec_num - (hours * 3600) - (minutes * 60);
-   
-      if (hours   < 10) {hours   = "0"+hours;}
-      if (minutes < 10) {minutes = "0"+minutes;}
-      if (seconds < 10) {seconds = "0"+seconds;}
-      return hours+':'+minutes+':'+seconds;
-    }
   }
 ]);
