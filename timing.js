@@ -33,8 +33,8 @@ angular.module('timing', [])
     var gURL = 'http://localhost:8080/sky/cloud/A1wAHHaJ6YdUktuBQ97PJ6/temperature_store/temperatures';
     $scope.getAll = function() {
       return $http.get(gURL).success(function(data){
-        console.log(data)
-        angular.copy(data, $scope.temps);
+        console.log(data);
+        $scope.temps = data;
       });
     };
  
