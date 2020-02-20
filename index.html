@@ -20,13 +20,9 @@
     <input type="text" ng-model="name" placeholder="name"></input>
     <button type="submit" focus-input>timing started</button>
   </form>
-  <div ng-repeat="timing in timings | orderBy: '-ordinal'">
-    {{timing.number}} &middot;
-    {{timing.name}} &middot;
-    {{timing.time_out}} &middot;
-    {{timing.time_in}}
-    <span class="finished" ng-click="finished(timing.number)" ng-if="!timing.time_in">timing finished</span>
-    <span ng-if="!!timing.time_in">&middot; {{timeDiff(timing)}}</span>
+  <div ng-repeat="entry in temps | orderBy: '-ordinal'">
+    {{entry.timestamp}} &middot;
+    {{entry.temp}} &middot;
   </div>
 </div>
 </div>
