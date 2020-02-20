@@ -37,6 +37,7 @@ angular.module('timing', [])
     var gURL = '/sky/cloud/'NxL6ZAMcKao5wu2BQ3tuo'/temperature_store/temperatures';
     $scope.getAll = function() {
       return $http.get(gURL).success(function(data){
+        console.log(data)
         angular.copy(data, $scope.temps);
       });
     };
