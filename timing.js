@@ -13,7 +13,7 @@ angular.module('timing', [])
 .controller('MainCtrl', [
   '$scope','$http','$window',
   function($scope,$http,$window){
-    $scope.temps = [];
+    $scope.temps = {};
  
     $scope.getTemps = function() {
       var pURL = 'http://localhost:8080/sky/cloud/A1wAHHaJ6YdUktuBQ97PJ6/temperature_store/temperatures';
