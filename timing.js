@@ -13,7 +13,7 @@ angular.module('timing', [])
 .controller('MainCtrl', [
   '$scope','$http','$window',
   function($scope,$http,$window){
-    $scope.timings = [];
+    $scope.temps = [];
     $scope.eci = $window.location.search.substring(1);
  
     var bURL = '/sky/event/'+$scope.eci+'/eid/timing/started';
@@ -34,10 +34,10 @@ angular.module('timing', [])
       });
     };
  
-    var gURL = '/sky/cloud/'+$scope.eci+'/timing_tracker/entries';
+    var gURL = '/sky/cloud/'NxL6ZAMcKao5wu2BQ3tuo'/temperature_store/temperatures';
     $scope.getAll = function() {
       return $http.get(gURL).success(function(data){
-        angular.copy(data, $scope.timings);
+        angular.copy(data, $scope.temps);
       });
     };
  
